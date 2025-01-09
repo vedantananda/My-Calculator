@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <title>My Calculator</title>
+        <style>
+            table {
+                border: 1px solid black;
+                padding: 5px;
+            }
+            td{
+                border: 1px solid black;
+                adding: 5px;
+            }
+            #screen {
+                height: 40px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td colspan="4" id = "screen"></td>
+            </tr>
+            <tr>
+                <td onclick = "clickHandler('0')">0</td>
+                <td onclick = "clickHandler('1')">1</td>
+                <td onclick = "clickHandler('2')">2</td>
+                <td onclick = "clickHandler('3')">3</td>
+            </tr>
+            <tr>
+                <td onclick = "clickHandler('4')">4</td>
+                <td onclick = "clickHandler('5')">5</td>
+                <td onclick = "clickHandler('6')">6</td>
+                <td onclick = "clickHandler('7')">7</td>
+            </tr>
+            <tr>
+                <td onclick = "clickHandler('8')">8</td>
+                <td onclick = "clickHandler('9')">9</td>
+                <td onclick = "clickHandler('+')">+</td>
+                <td onclick = "clickHandler('-')">-</td>
+            </tr>
+            <tr>
+                <td onclick = "clickHandler('*')">*</td>
+                <td onclick = "clickHandler('/')">/</td>
+                <td onclick = "clickEvaluate('=')">=</td>
+                <td>C</td>
+            </tr>
+        </table>
+
+        <script>
+            console.log("Hello World");
+            function clickHandler(value){
+                console.log("Button Clicked" + value);
+                
+                if(value == "+" || value == "-" || value == "*" || value == "/"){
+                    value = " "+value+" ";
+                }
+                var screenContent = document.getElementById("screen");
+                screenContent.innerHTML = screenContent.innerHTML + value;
+            }
+
+            function clickEvaluate(){
+                console.log("Evaluate clicked");
+
+                var expression = documet.getElementById("screen").innerHTML;
+                console.log("Expression: "+expression);
+
+                var expressionArray = expression.split(" ");
+                console.log("Expression Array: "+expressionArray);
+                var result=0;
+                if(expressionArray[1] == "+"){
+                    result = parseInt(expressionArray[0]) + parseInt(expressionArray[2]);
+                }
+                document.getElementById("screen").innerHTML = result;
+            }
+
+            function emptyScreen(){
+                console.log("Screen emptied");
+            }
+
+        </script>
+    </body>
+</html>
+                
